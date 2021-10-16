@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,7 @@ public class MediaActivity extends AppCompatActivity
     public void onSelectFile(View view)
     {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("*/*");
+        intent.setType("audio/*");
         if (intent.resolveActivity(getPackageManager()) != null)
         {
             startActivityForResult(intent, 0);
@@ -37,20 +38,17 @@ public class MediaActivity extends AppCompatActivity
         if (requestCode == 0 && resultCode == RESULT_OK)
         {
             TextView view = (TextView) findViewById(R.id.fileUriView);
-            m_savedUri = (Uri) data.getData();
-            view.setText(m_savedUri.toString());
+            m_savedUri = (Uri) (data != null ? data.getData() : null);
+            view.setText(m_savedUri != null ? m_savedUri.toString() : "");
         }
     }
 
-    public void onView(View view)
-    {
-        if (m_savedUri != null)
-        {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(m_savedUri);
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
+    public void onPlay(View view) {
+            try {
+                MediaPlayer mediaPlayer = MediaPlayer.create(this, m_savedUri);
+                mediaPlayer.start();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }
     }
 }

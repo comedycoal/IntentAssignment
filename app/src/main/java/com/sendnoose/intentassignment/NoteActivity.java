@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.actions.NoteIntents;
 
@@ -32,5 +33,6 @@ public class NoteActivity extends AppCompatActivity
         {
             startActivity(intent);
         }
+        Toast.makeText(this, "Note created", Toast.LENGTH_LONG).show();
     }
 }
