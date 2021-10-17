@@ -36,16 +36,16 @@
         android:maxLength="3000"
         android:scrollHorizontally="false"
         android:id="@+id/bodyView"/>
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text=""-->
-<!--        android:id="@+id/fileUriView"/>-->
-<!--    <Button-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Select File..."-->
-<!--        android:onClick="onSelectFile"/>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/fileUriView"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select File..."
+        android:onClick="onSelectFile"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
